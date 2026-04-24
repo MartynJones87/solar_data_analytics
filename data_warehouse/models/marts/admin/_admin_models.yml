@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: data_date
+    description: Mart model that contains the latest date when reading exist within the data.
+    columns:
+      - name: data_date
+        description: The latest reading date within the dataset.
+        tests:
+          - not_null

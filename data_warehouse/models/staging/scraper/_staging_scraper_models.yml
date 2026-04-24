@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: main # DuckDB uses "main" as the default schema
+    tables:
+      - name: raw_solar_data
+        columns:
+          - name: date
+            tests:
+              - not_null
+          - name: hour
+            type: double
+            tests:
+              - not_null
+          - name: grid
+            type: double
+            tests:
+              - not_null
+          - name: solar
+            type: double
+            tests:
+              - not_null
+          - name: battery
+            type: double
+            tests:
+              - not_null
+          - name: home
+            type: double
+            tests:
+              - not_null

@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: total_solar_generation
+    description: "Total solar generation calculated from cleaned solar data"
+    columns:
+      - name: total_solar_generation
+        description: The total amount of kWh generated from the solar panels.
+      - name: average_daily_solar_generation
+        description: The average kWh generated per day by the solar panels.

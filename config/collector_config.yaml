@@ -1,0 +1,14 @@
+---
+# Collector Configuration
+# This file contains configuration settings for the data collector.
+start_date: "2026-01-17"
+data_folder: "data"
+device_name: "Nokia T20"
+appium:
+  host: "localhost"
+  port: 4723
+  platform_name: "Android"
+  automation_name: "UiAutomator2"
+  device_name: "AndroidDevice"
+  app_package: "com.duracell"
+  app_activity: "com.duracell/.MainActivity"
