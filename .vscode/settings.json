@@ -1,0 +1,53 @@
+{
+    "python.useEnvironmentsExtension": true,
+    "[python]": {
+        "editor.formatOnType": false,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "explicit",
+        },
+    },
+    // Disable the built-in language server to avoid conflicts with ty type checking.
+    "python.languageServer": "None",
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "sqlfluff.config": "${workspaceFolder}/pyproject.toml",
+    "sqlfluff.dialect": "duckdb",
+    "sqlfluff.env.environmentVariables": [
+        {
+        "key": "example_key",
+        "value": "example_value"
+        }
+    ],
+    "[sql]": {
+        "editor.formatOnType": false,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter":  "sqlfluff.vscode-sqlfluff"
+    },
+    "sqlfluff.env.customDotEnvFiles": [
+        "${workspaceFolder}/example.env"
+    ],
+    "sqlfluff.env.useDotEnvFile": true,
+    "sqlfluff.excludeRules": ["L009"],
+    "sqlfluff.executablePath": "sqlfluff",
+    "sqlfluff.ignoreLocalConfig": false,
+    "sqlfluff.ignoreParsing": false,
+    "sqlfluff.rules": [],
+    "sqlfluff.suppressNotifications": false,
+    "sqlfluff.workingDirectory": "",
+    /* Linter */
+    "sqlfluff.linter.arguments": [],
+    "sqlfluff.linter.run": "onSave",
+    "sqlfluff.linter.diagnosticSeverity": "error",
+    "sqlfluff.linter.diagnosticSeverityByRule": [
+        {
+        "rule": "L010",
+        "severity": "warning"
+        }
+    ],
+    "sqlfluff.linter.lintEntireProject": true,
+    /* Formatter */
+    "sqlfluff.format.arguments": [],
+    "sqlfluff.format.enabled": true
+}

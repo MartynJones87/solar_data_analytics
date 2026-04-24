@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: int_generation_solar_cleaned
+    description: "Cleaned solar generation data with exclusions applied"
+    columns:
+      - name: reading_datetime
+        description: The date and hour of the data reading.
+      - name: grid
+        description: How many kWh was imported from the grid (+ve) or exported to the grid (-ve).
+      - name: solar
+        description: How many kWh of energy did the solar panels generate.
+      - name: battery
+        description: How many kWh was stored into the battery (+ve) or used from the battery (-ve).
+      - name: home
+        descriptions: How many kWh did the house consume?
+      - name: ingested_at
+        description: When was this reading imported into the database.
+      - name: off_peak_rate
+        description: What price in GBP is charged during off-peak hours for a kWh of energy from the grid.
+      - name: peak_rate
+        description:  What price in GBP is charged during peak hours for a kWh of energy from the grid.
+      - name: export_rate
+        description: What price in GBP is paid for a kWh exported to the grid.
+      - name: is_off_peak
+        description: Is this reading referring to an off-peak hour.

@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: main # DuckDB uses "main" as the default schema
+    tables:
+      - name: raw_tariffs
+        columns:
+          - name: start_date
+            tests:
+              - not_null
+              - unique
+          - name: end_date
+            nullable: true
+          - name: off_peak_rate
+            tests:
+              - not_null
+          - name: peak_rate
+            tests:
+              - not_null
+          - name: export_rate
+            tests:
+              - not_null
+      - name: raw_exclusions
+        columns:
+          - name: start_date
+            tests:
+              - not_null
+          - name: start_time
+            tests:
+              - not_null
+          - name: end_date
+            tests:
+              - not_null
+          - name: end_time
+            tests:
+              - not_null
+          - name: exclusion_reason
+            tests:
+              - not_null

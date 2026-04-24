@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: daily_savings
+    description: "Daily savings calculated based on solar generation and energy rates"
+    columns:
+      - name: reading_date
+      - name: grid
+      - name: solar
+      - name: battery
+      - name: home
+      - name: kw_saved
+      - name: kw_exported
+      - name: saving
+      - name: export_income
+      - name: total_saving
+  - name: monthly_savings
+    description: "Monthly savings calculated by aggregating daily savings"
+    columns:
+      - name: reading_month
+      - name: grid
+      - name: solar
+      - name: battery
+      - name: home
+      - name: kw_saved
+      - name: kw_exported
+      - name: saving
+      - name: export_income
+      - name: total_saving
+  - name: total_savings
+    description: "Total savings calculated by aggregating monthly savings"
+    columns:
+      - name: grid
+      - name: solar
+      - name: battery
+      - name: home
+      - name: kw_saved
+      - name: kw_exported
+      - name: saving
+      - name: export_income
+      - name: total_saving
+  - name: payback_forecast_development
+    description: "Development of the payback forecast over time"
+    columns:
+      - name: reading_date
+      - name: total_saving
+      - name: cumulative_saving
+      - name: day_number
+      - name: installation_cost
+      - name: payback_percentage
+      - name: days_to_payback
+      - name: average_daily_saving
+      - name: forecast_payback_date
+  - name: payback_forecast_current
+    description: "Payback forecast at the current date"
+    columns:
+      - name: data_date
+      - name: payback_percentage
+      - name: day_number
+      - name: days_to_payback
+      - name: average_daily_saving
+      - name: forecast_payback_date

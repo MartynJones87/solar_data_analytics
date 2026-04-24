@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_finance_cost_savings
+    description: >
+      Calculates cost savings from solar panel usage, battery storage, and grid export income.
+      This model analyzes energy consumption patterns to determine financial benefits of
+      solar self-consumption versus grid import, battery charging costs during off-peak hours,
+      and revenue from exporting excess solar generation to the grid.
+    columns:
+      - name: reading_datetime
+        description: Timestamp of the energy reading
+        tests:
+          - not_null
+      - name: grid
+        description: Grid energy usage in kW (positive = importing from grid, negative = exporting to grid)
+      - name: solar
+        description: Solar panel generation in kW
+      - name: battery
+        description: Battery charge/discharge in kW (positive = charging, negative = discharging)
+      - name: home
+        description: Home energy consumption in kW
+      - name: off_peak_rate
+        description: Electricity rate during off-peak hours ($/kWh)
+      - name: peak_rate
+        description: Electricity rate during peak hours ($/kWh)
+      - name: export_rate
+        description: Rate paid for exporting energy to grid ($/kWh)
+      - name: is_off_peak
+        description: Boolean flag indicating if reading is during off-peak hours
+      - name: kw_saved
+        description: Energy offset from grid during peak hours (kW) - energy that would have been purchased from grid
+      - name: kw_exported
+        description: Excess energy sent back to the grid (kW)
+      - name: saving
+        description: Net monetary savings from solar/battery usage minus battery charging cost ($)
+      - name: export_income
+        description: Revenue earned from exporting excess solar to grid ($)
+      - name: total_saving
+        description: Total economic benefit including savings, export income, and battery charging costs ($)

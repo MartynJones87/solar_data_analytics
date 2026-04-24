@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: int_admin_exclusions
+    description: >
+      Intermediate model that combines exclusion date and time into a single timestamp for easier analysis.
+      This model creates a view that concatenates the start and end dates with their respective times to produce
+      start_datetime and end_datetime fields, which can be used for filtering and joining with other models.
+    columns:
+      - name: start_datetime
+        description: Combined timestamp of exclusion start date and time
+        tests:
+          - not_null
+      - name: end_datetime
+        description: Combined timestamp of exclusion end date and time
+        tests:
+          - not_null
+  - name: int_admin_tariffs
+    descriptions: >
+    columns:
+      - name: start_date
+        description: The date the tariff rates started.
+        tests:
+          - not_null
+      - name: end_date
+        description:  The date the tariff rates ended.
+        tests:
+          - not_null
+      - name: off_peak_start_hour
+        description: The hour the off-peak rate begins being charged.
+        tests:
+          - not_null
+      - name: off_peak_end_hour
+        description:  The hour the off-peak rate stops being charged.
+        tests:
+          - not_null
+      - name: off_peak_rate
+        description: The rate charged during the off-peak hours of the tariff.
+        tests:
+          - not_null
+      - name: peak_rate
+        description: The rate charge during the peak hours of the tariff.
+        tests:
+          - not_null
+      - name: export_rate
+        description: The rate paid for exporting electricity back to the grid.
+        tests:
+          - not_null
