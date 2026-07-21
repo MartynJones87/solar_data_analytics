@@ -18,9 +18,18 @@ st.set_page_config(layout="wide")
 
 pg = st.navigation(
     [
-        st.Page("dashboard/pages/01_savings_page.py"),
-        # st.Page("dashboard/pages/02_solar_generation_page.py"),
-        st.Page("dashboard/pages/03_debug_page.py"),
+        st.Page(
+            "dashboard/pages/01_savings_page.py",
+            title="Savings",
+        ),
+        st.Page(
+            "dashboard/pages/02_solar_generation_page.py",
+            title="Generation",
+        ),
+        st.Page(
+            "dashboard/pages/03_debug_page.py",
+            title="Debug",
+        ),
     ]
 )
 pg.run()

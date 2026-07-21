@@ -53,6 +53,54 @@ def get_data_date(
         raise
 
 
+def get_average_solar_generation_by_day_hour(
+    conn: duckdb.DuckDBPyConnection = connect_to_duckdb(),
+) -> pd.DataFrame:
+    try:
+        query = """
+        SELECT
+            g.reading_day,
+            g.reading_hour,
+            g.average_solar_generation,
+            g.minimum_solar_generation,
+            g.maximum_solar_generation
+        FROM
+            solar_generation_by_day_hour AS g
+        ORDER BY
+            g.reading_day DESC,
+            g.reading_hour DESC;
+        """
+        result: pd.DataFrame = conn.execute(query).df()
+        return result
+    except Exception as e:
+        print(f"Error retrieving generation by day month: {e}")
+        raise
+
+
+def get_average_solar_generation_by_month_hour(
+    conn: duckdb.DuckDBPyConnection = connect_to_duckdb(),
+) -> pd.DataFrame:
+    try:
+        query = """
+        SELECT
+            g.reading_month,
+            g.reading_hour,
+            g.average_solar_generation,
+            g.minimum_solar_generation,
+            g.maximum_solar_generation
+        FROM
+            solar_generation_by_month_hour AS g
+        ORDER BY
+            g.reading_month DESC,
+            g.reading_hour DESC;
+        """
+        result: pd.DataFrame = conn.execute(query).df()
+        return result
+    except Exception as e:
+        print(f"Error retrieving generation by hour month: {e}")
+        raise
+
+
 def get_daily_savings(
     conn: duckdb.DuckDBPyConnection = connect_to_duckdb(),
 ) -> pd.DataFrame:
