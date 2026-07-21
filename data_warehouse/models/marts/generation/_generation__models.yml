@@ -1,6 +1,32 @@
 version: 2
 
 models:
+  - name: solar_generation_by_day_hour
+    description: "Average Solar Generation by Day and Hour"
+    columns:
+      - name: reading_day
+        description: "The day of the generation."
+      - name: reading_hour
+        description: "The hour of the generation."
+      - name: average_solar_generation
+        description: "The average solar generated during this hour of this day."
+      - name: minimum_solar_generation
+        description: "The minimum solar generated during this hour of this day."
+      - name: maximum_solar_generation
+        description: "The maximum solar generated during this hour of this day."
+  - name: solar_generation_by_month_hour
+    description: "Average Solar Generation by Month and Hour"
+    columns:
+      - name: reading_month
+        description: "The month of the generation."
+      - name: reading_hour
+        description: "The hour of the generation."
+      - name: average_solar_generation
+        description: "The average solar generated during this hour of this month."
+      - name: minimum_solar_generation
+        description: "The minimum solar generated during this hour of this month."
+      - name: maximum_solar_generation
+        description: "The maximum solar generated during this hour of this month."
   - name: total_solar_generation
     description: "Total solar generation calculated from cleaned solar data"
     columns:
