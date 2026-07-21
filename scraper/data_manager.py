@@ -254,12 +254,15 @@ class DataManager:
         logging.info("Wrote CSV (%s rows) to %s", len(rows), csv_path)
 
     def consolidate_into_duckdb(self) -> None:
+        data_folder_path = get_base_path() / self.collector_config.data_folder
         # Connect to (or create) a local DuckDB file
-        with duckdb.connect("data/solar_data.duckdb") as con:
+        with duckdb.connect(f"{data_folder_path}/solar_data.duckdb") as con:
+            # Drop the raw_solar_data table if it already exists to ensure we start fresh each time we run this consolidation step.
+            con.execute("DROP TABLE IF EXISTS raw_solar_data")
             # Load Inventory Data (JSON)
-            con.execute("""
+            con.execute(f"""
                 CREATE TABLE IF NOT EXISTS raw_solar_data AS 
-                SELECT * FROM read_json_auto('data/solar_data/**/*.json')
+                SELECT * FROM read_json_auto('{data_folder_path}/solar_data/**/*.json')
             """)
 
             print("Successfully loaded raw data into DuckDB!")

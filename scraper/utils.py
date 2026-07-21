@@ -4,7 +4,7 @@ from pathlib import Path
 
 def get_base_path() -> Path:
     """
-    Get the base path of the project, which is the parent directory of the 'collector' directory.
+    Get the base path of the project, which is the parent directory of the 'scraper' directory.
 
     Returns:
         Path: The base path of the project.

@@ -64,6 +64,7 @@ def collect_data():
 
     # data_manager.consolidate_into_parquet()
     data_manager.consolidate_into_csv()
+    data_manager.consolidate_into_duckdb()
 
 
 @app.command()
