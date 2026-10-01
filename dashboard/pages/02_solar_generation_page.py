@@ -21,7 +21,11 @@ st.altair_chart(
     alt.Chart(daily_hourly_solar_generation)
     .mark_rect()
     .encode(
-        x=alt.X("reading_day:O", title="Day"),
+        x=alt.X(
+            "yearmonthdate(reading_day):O",
+            title="Day",
+            axis=alt.Axis(format="%Y-%m-%d", labelAngle=-90),
+        ),
         y=alt.Y("reading_hour:O", title="Hour of Day"),
         color=alt.Color(
             "average_solar_generation:Q", title="Solar Generation (kWh)", scale=alt.Scale(scheme="viridis")
@@ -35,7 +39,11 @@ st.altair_chart(
     alt.Chart(monthly_hourly_solar_generation)
     .mark_rect()
     .encode(
-        x=alt.X("reading_month:O", title="Month"),
+        x=alt.X(
+            "yearmonth(reading_month):O",
+            title="Month",
+            axis=alt.Axis(format="%Y-%m", labelAngle=-90),
+        ),
         y=alt.Y("reading_hour:O", title="Hour of Day"),
         color=alt.Color(
             "average_solar_generation:Q", title="Solar Generation (kWh)", scale=alt.Scale(scheme="viridis")
