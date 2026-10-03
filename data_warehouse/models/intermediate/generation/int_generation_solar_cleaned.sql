@@ -42,10 +42,18 @@ SELECT
     tar.peak_rate,
     tar.export_rate,
     COALESCE(
-        DATE_PART('hour', sol.reading_datetime)
-        >= DATE_PART('hour', tar.off_peak_start_hour)
-        AND DATE_PART('hour', sol.reading_datetime)
-        <= DATE_PART('hour', tar.off_peak_end_hour),
+        CASE
+            WHEN DATE_PART('hour', tar.off_peak_start_hour)
+                <= DATE_PART('hour', tar.off_peak_end_hour)
+            THEN DATE_PART('hour', sol.reading_datetime)
+                >= DATE_PART('hour', tar.off_peak_start_hour)
+                AND DATE_PART('hour', sol.reading_datetime)
+                <= DATE_PART('hour', tar.off_peak_end_hour)
+            ELSE DATE_PART('hour', sol.reading_datetime)
+                >= DATE_PART('hour', tar.off_peak_start_hour)
+                OR DATE_PART('hour', sol.reading_datetime)
+                <= DATE_PART('hour', tar.off_peak_end_hour)
+        END,
         false
     ) AS is_off_peak
 FROM
